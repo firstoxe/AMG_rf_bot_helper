@@ -1,0 +1,16 @@
+from .Trigger_f import TriggerCheck
+from loader import dp
+from .forward_from_rf_bot import ForwardFromRfBot
+from .energy_cap import energyCap
+from .echo_item import EchoItem
+from .amplifier import AmplifierCheck
+from .work_check import WorkCheck
+
+if __name__ == "filters":
+    dp.filters_factory.bind(TriggerCheck)
+    dp.filters_factory.bind(ForwardFromRfBot)
+    dp.filters_factory.bind(energyCap)
+    dp.filters_factory.bind(EchoItem)
+    dp.filters_factory.bind(AmplifierCheck)
+    dp.filters_factory.bind(WorkCheck)
+    pass

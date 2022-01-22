@@ -1,0 +1,6 @@
+aiogram<=3
+aiohttp<=4
+aioredis<=3
+asyncpg==0.25.0
+emoji==1.6.3
+environs
