@@ -4,9 +4,9 @@ from loader import db
 from asyncpg import Record, Connection
 import re
 
+
 class EchoItem(BoundFilter):
     key = 'is_echo_item'
-
 
     def __init__(self, is_echo_item:bool):
         self.is_echo_item = is_echo_item
