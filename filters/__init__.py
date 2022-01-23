@@ -5,6 +5,7 @@ from .energy_cap import energyCap
 from .echo_item import EchoItem
 from .amplifier import AmplifierCheck
 from .work_check import WorkCheck
+from .is_creator import CreatorFilter
 
 if __name__ == "filters":
     dp.filters_factory.bind(TriggerCheck)
@@ -13,4 +14,4 @@ if __name__ == "filters":
     dp.filters_factory.bind(EchoItem)
     dp.filters_factory.bind(AmplifierCheck)
     dp.filters_factory.bind(WorkCheck)
-    pass
+    dp.filters_factory.bind(CreatorFilter)
