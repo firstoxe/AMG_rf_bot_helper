@@ -6,6 +6,7 @@ from .echo_item import EchoItem
 from .amplifier import AmplifierCheck
 from .work_check import WorkCheck
 from .is_creator import CreatorFilter
+from .voteLeader import VoteLeader
 
 if __name__ == "filters":
     dp.filters_factory.bind(TriggerCheck)
@@ -15,3 +16,4 @@ if __name__ == "filters":
     dp.filters_factory.bind(AmplifierCheck)
     dp.filters_factory.bind(WorkCheck)
     dp.filters_factory.bind(CreatorFilter)
+    dp.filters_factory.bind(VoteLeader)

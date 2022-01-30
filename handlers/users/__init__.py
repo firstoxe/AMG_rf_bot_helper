@@ -1,4 +1,5 @@
 from .help import dp
+from .vote_leader import dp
 from .start import dp
 from .my_id import dp
 from .Caves import dp
