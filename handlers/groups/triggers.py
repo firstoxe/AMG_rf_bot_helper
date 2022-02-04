@@ -10,7 +10,7 @@ from aiogram import types
 
 @rate_limit(1, 'add_trigger')
 @dp.message_handler(commands='trigger',
-                    chat_type=[types.ChatType.GROUP,types.ChatType.SUPER_GROUP],
+                    chat_type=[types.ChatType.GROUP,types.ChatType.SUPERGROUP],
                     is_reply=True,
                     is_chat_admin=True,
                     commands_prefix='+')
@@ -100,7 +100,7 @@ async def bot_trigger_add_or_update(message: types.Message):
 
 @rate_limit(1, 'del_trigger')
 @dp.message_handler(commands='trigger',
-                    chat_type=[types.ChatType.GROUP,types.ChatType.SUPER_GROUP],
+                    chat_type=[types.ChatType.GROUP,types.ChatType.SUPERGROUP],
                     is_chat_admin=True,
                     commands_prefix='-')
 async def bot_trigger_add_or_update(message: types.Message):
@@ -123,7 +123,7 @@ async def bot_trigger_add_or_update(message: types.Message):
 
 @rate_limit(2, 'trigger_list')
 @dp.message_handler(commands='trigger',
-                    chat_type=[types.ChatType.GROUP,types.ChatType.SUPER_GROUP],
+                    chat_type=[types.ChatType.GROUP,types.ChatType.SUPERGROUP],
                     commands_prefix='/')
 async def bot_trigger_add_or_update(message: types.Message):
     try:
