@@ -28,7 +28,7 @@ async def bot_get_recipe(message: types.Message):
         if record[0][4] != None:
                 result = result + ':dashing_away: +' + str(record[0][4]) + '\n'
         if record[0][5] != None:
-                result = result + ':direct_hit: +' + str(record[0][5]) + '\n'
+                result = result + ':bullseye: +' + str(record[0][5]) + '\n'
         if record[0][6] != None:
                 result = result + ':crystal_ball: +' + str(record[0][6]) + '\n'
         if record[0][7] != None:
