@@ -39,7 +39,7 @@ async def bot_echo(message: types.Message):
 
 
 @rate_limit(2, 'trigger')
-@dp.message_handler(chat_type=[types.ChatType.GROUP, types.ChatType.SUPER_GROUP], content_types=types.ContentTypes.TEXT, is_trigger=True)
+@dp.message_handler(chat_type=[types.ChatType.GROUP, types.ChatType.SUPERGROUP], content_types=types.ContentTypes.TEXT, is_trigger=True)
 async def bot_trigger_echo(message: types.Message):
     pool: Connection = db
     arg = message.chat.id, message.text
@@ -80,7 +80,7 @@ async def bot_trigger_echo_item(message: types.Message):
 
 
 @rate_limit(0, 'echo_shiff_chat_user')
-@dp.message_handler(content_types=types.ContentTypes.TEXT, chat_type=[types.ChatType.GROUP,types.ChatType.SUPER_GROUP])
+@dp.message_handler(content_types=types.ContentTypes.TEXT, chat_type=[types.ChatType.GROUP, types.ChatType.SUPERGROUP])
 async def bot_new_all_chats_member(message: types.Message):
 
     pool: Connection = db
