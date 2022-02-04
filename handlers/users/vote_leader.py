@@ -15,7 +15,7 @@ from handlers.commands.recipe.item import stat_for_item
 @dp.message_handler(vote_leader=True)
 async def bot_anw_vote_leader(message: types.Message):
     msg = message.text.splitlines()
-    msg.sort(key=lambda x: float(x.split(' | ')[3][:-1]), reverse=True)
+    msg.sort(key=lambda x: (float(x.split(' | ')[3][:-1]), int(x.split(' | ')[2].split(' pvp')[0])), reverse=True)
 
     def toFixed(numObj, digits=2):
         return float(f"{numObj:.{digits}f}")
@@ -46,18 +46,24 @@ async def bot_anw_vote_leader(message: types.Message):
             new_list.append(item + ' - ' + str(int(toFixed(float(item.split(' | ')[3][:-1]) / golos, 0))) + '🗳')
         else:
             new_list.append(item + ' - 0🗳')
-
-    aws = f"""👑Патриарх: {new_list[0].split(' | ')[0].split(')', maxsplit=1)[1]} - {new_list[0].split(' | ')[3].split(' - ')[1]}
-🔱Архонт: {new_list[1].split(' | ')[0].split(')', maxsplit=1)[1]} - {new_list[1].split(' | ')[3].split(' - ')[1]}
-🗡Атакующий: {new_list[2].split(' | ')[0].split(')', maxsplit=1)[1]} - {new_list[2].split(' | ')[3].split(' - ')[1]}
-🛡Защитник: {new_list[3].split(' | ')[0].split(')', maxsplit=1)[1]} - {new_list[3].split(' | ')[3].split(' - ')[1]}
-📯Поддержка: {new_list[4].split(' | ')[0].split(')', maxsplit=1)[1]} - {new_list[4].split(' | ')[3].split(' - ')[1]}
+    if new_list[0].count('|') == 4:
+        a = 4
+    else:
+        a = 3
+    aws = f"""👑Патриарх: {new_list[0].split(' | ')[0].split(')', maxsplit=1)[1]} - {new_list[0].split(' | ')[a].split(' - ')[1]}
+🔱Архонт: {new_list[1].split(' | ')[0].split(')', maxsplit=1)[1]} - {new_list[1].split(' | ')[a].split(' - ')[1]}
+🗡Атакующий: {new_list[2].split(' | ')[0].split(')', maxsplit=1)[1]} - {new_list[2].split(' | ')[a].split(' - ')[1]}
+🛡Защитник: {new_list[3].split(' | ')[0].split(')', maxsplit=1)[1]} - {new_list[3].split(' | ')[a].split(' - ')[1]}
+📯Поддержка: {new_list[4].split(' | ')[0].split(')', maxsplit=1)[1]} - {new_list[4].split(' | ')[a].split(' - ')[1]}
 ============================="""
 
     if len(new_list) > 5:
         for item in new_list:
             if new_list.index(item) > 4:
-                aws += f"\n {item.split(' | ')[0].split(')', maxsplit=1)[1]}"
+                if int(item.split(' | ')[a].split(' - ')[1].split('🗳')[0]) == 0:
+                    aws += f"\n {item.split(' | ')[0].split(')', maxsplit=1)[1]} - 0🗳"
+                else:
+                    aws += f"\n {item.split(' | ')[0].split(')', maxsplit=1)[1]}  - {item.split(' | ')[a].split(' - ')[1]}"
     aws += f"\n=============================\nЦена 1🗳 = {golos}%"
     await message.reply(aws)
     await message.delete()
