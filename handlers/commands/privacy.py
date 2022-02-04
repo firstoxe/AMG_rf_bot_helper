@@ -12,15 +12,14 @@ from utils.misc import rate_limit
 from aiogram.utils.emoji import demojize
 
 
-
 @rate_limit(3, 'privacy')
-@dp.message_handler(commands='privacy', chat_type=[ChatType.GROUP, ChatType.SUPER_GROUP], is_chat_admin=True)
+@dp.message_handler(commands='privacy', chat_type=[ChatType.GROUP, ChatType.SUPERGROUP], is_chat_admin=True)
 async def bot_command_privacy(message: types.Message):
     pool: Connection = db
     res: Record = await pool.fetchrow('''SELECT * from test.public.chats where id_chat=$1''', message.chat.id,)
     anws = (f'Настройки для чата <b>{message.chat.title}</b>\n'
             f'id: <code>{message.chat.id}</code>\n'
-            f'тип: <b>{"group" if message.chat.type == ChatType.GROUP else ChatType.SUPER_GROUP}</b>')
+            f'тип: <b>{"group" if message.chat.type == ChatType.GROUP else ChatType.SUPERGROUP}</b>')
     anws = f'{anws}\n\nОграничение по уровню - '+(f'✅<b>включено</b> 🏅ур. {res["min_lvl"]}-{res["max_lvl"]}' if res["lvl"] else '❌<b>отключено</b>')
     anws = f'{anws}\n\nВход не игрокам рф - {f"❌<b>запрещён</b>" if res["rf_member"] else f"✅<b>разрешён</b>"}'
     anws = f'{anws}\n\nОграничение по расам -' + (f"✅<b>включено</b> {'✅👩‍🚀' if res['race_bel'] else '❌👩‍🚀'} {'✅🧝‍♀' if res['race_cor'] else '❌🧝‍♀'} {'✅🤖' if res['race_acr'] else '❌🤖'}" if res["race"] else f"❌<b>отключено</b>")
@@ -31,7 +30,7 @@ async def bot_command_privacy(message: types.Message):
 
 
 @dp.message_handler(state=[privacySet.wait_add_guild, privacySet.wait_add_max_lvl,
-                           privacySet.wait_add_min_lvl,privacySet.wait_add_lvl_up], text=['нет', 'Нет'])
+                           privacySet.wait_add_min_lvl, privacySet.wait_add_lvl_up], text=['нет', 'Нет'])
 async def bot_fsm_cancel_add_guild(message: types.Message, state: FSMContext):
     await message.delete()
     await message.bot.delete_message(chat_id=(await state.get_data()).get("chat_id"),message_id=(await state.get_data()).get("anws_msg_id"))

@@ -201,7 +201,7 @@ async def bot_forward_profile(message: types.Message):
             if item.find(':high_voltage:Зевса: :bullseye:+') != -1:
                 lvl_totems.update({'critical': item.split(':bullseye:+')[1].split('%')[0]})
             if item.find(':comet:Кроноса: :red_heart:+') != -1:
-                lvl_totems.update({'hp': item.split(':red_hea rt:+')[1].split('%')[0]})
+                lvl_totems.update({'hp': item.split(':red_heart:+')[1].split('%')[0]})
             if item.find(':hourglass_not_done:Деймоса: :hourglass_not_done:+') != -1:
                 lvl_totems.update({'acc': item.split(':hourglass_not_done:+')[1].split('%')[0]})
             if item.find(':reminder_ribbon:Премиум аккаунт по - ') != -1:
@@ -272,7 +272,7 @@ async def bot_forward_profile(message: types.Message):
                                          f':red_heart:{hp}\n:oncoming_fist_light_skin_tone:{pvp}\n'
                                          f':pick:{kopka} :flashlight:{eter}\n'
                                          f':crossed_swords:{atk} :shield:{defense}\n'
-                                         f':dashing_away:{dodge} :direct_hit:{critical} :hourglass_not_done:{accuracy}'
+                                         f':dashing_away:{dodge} :bullseye:{critical} :hourglass_not_done:{accuracy}'
                                          f':crystal_ball:{exp_bonus}%\n\n'
                                          f'Тотемы:\n'
                                          f':dagger:{lvl_totems.get("atk")}:water_wave:{lvl_totems.get("defense")}:high_voltage:{lvl_totems.get("critical")}'
@@ -295,7 +295,7 @@ async def bot_forward_profile(message: types.Message):
                     f'C последнего обновления прошло :hourglass_not_done:{days}д. {hours}ч. {minutes}м. {seconds}с.\n\n'
                     f'<b>Изменения по статам</b>:\n'
                     f':red_heart:{for_stat(hp,record[7],0)} :crossed_swords:{for_stat(atk,record[8],0)} :shield:{for_stat(defense,record[9],0)}\n'
-                    f' :dashing_away:{for_stat(dodge,record[10],2)} :direct_hit:{for_stat(critical,record[11],2)} :hourglass_not_done:{for_stat(accuracy,record[12],2)}')
+                    f' :dashing_away:{for_stat(dodge,record[10],2)} :bullseye:{for_stat(critical,record[11],2)} :hourglass_not_done:{for_stat(accuracy,record[12],2)}')
 
 
             anws = (f'{anws}\n\n<b>Тотемы</b>:\n'

@@ -34,7 +34,7 @@ async def recipte_take_foward(message: types.Message):
                 defens = int(item.split(' +')[1])
             if item.find(':dashing_away:') != -1:
                 dodge = float(item.split(' +')[1][:-1])
-            if item.find(':direct_hit:') != -1:
+            if item.find(':bullseye:') != -1:
                 crit = float(item.split(' +')[1][:-1])
             if item.find(':crystal_ball:') != -1:
                 exp = float(item.split(' +')[1][:-1])
@@ -117,12 +117,12 @@ async def recipte_take_foward(message: types.Message):
             if crit:
                 if crit > recept["crit"]:
                     new_crit = crit
-                    res.append(f':direct_hit:{new_crit}({recept["crit"]}): <b>+{(new_crit-recept["crit"]):.{2}f}</b>✨')
+                    res.append(f':bullseye:{new_crit}({recept["crit"]}): <b>+{(new_crit-recept["crit"]):.{2}f}</b>✨')
                     await pool.fetchrow("""UPDATE recipes SET crit=$1 where name=$2""", new_crit, name_rec,)
                 if crit == recept["crit"]:
-                    res.append(f':direct_hit:{crit}({recept["crit"]}): <b>{crit-recept["crit"]}</b>🔝')
+                    res.append(f':bullseye:{crit}({recept["crit"]}): <b>{crit-recept["crit"]}</b>🔝')
                 if crit < recept["crit"]:
-                    res.append(f':direct_hit:{crit}({recept["crit"]}): <b>{(crit-recept["crit"]):.{2}f}</b>')
+                    res.append(f':bullseye:{crit}({recept["crit"]}): <b>{(crit-recept["crit"]):.{2}f}</b>')
             if exp:
                 if exp > recept["exp"]:
                     new_exp = exp
@@ -171,7 +171,7 @@ async def recipte_take_foward_other_bot(message: types.Message):
                 defens = int(item.split(' (')[1].split(')')[0])
             if item.find(':dashing_away:') != -1:
                 dodge = float(item.split(' (')[1].split(')')[0])
-            if item.find(':direct_hit:') != -1:
+            if item.find(':bullseye:') != -1:
                 crit = float(item.split(' (')[1].split(')')[0])
             if item.find(':crystal_ball:') != -1:
                 exp = float(item.split(' (')[1].split(')')[0])
@@ -253,12 +253,12 @@ async def recipte_take_foward_other_bot(message: types.Message):
             if crit:
                 if crit > recept["crit"]:
                     new_crit = crit
-                    res.append(f':direct_hit:{new_crit}({recept["crit"]}): <b>+{(new_crit-recept["crit"]):.{2}f}</b>✨')
+                    res.append(f':bullseye:{new_crit}({recept["crit"]}): <b>+{(new_crit-recept["crit"]):.{2}f}</b>✨')
                     await pool.fetchrow("""UPDATE recipes SET crit=$1 where name=$2""", new_crit, name_rec,)
                 if crit == recept["crit"]:
-                    res.append(f':direct_hit:{crit}({recept["crit"]}): <b>{crit-recept["crit"]}</b>🔝')
+                    res.append(f':bullseye:{crit}({recept["crit"]}): <b>{crit-recept["crit"]}</b>🔝')
                 if crit < recept["crit"]:
-                    res.append(f':direct_hit:{crit}({recept["crit"]}): <b>{(crit-recept["crit"]):.{2}f}</b>')
+                    res.append(f':bullseye:{crit}({recept["crit"]}): <b>{(crit-recept["crit"]):.{2}f}</b>')
             if exp:
                 if exp > recept["exp"]:
                     new_exp = exp
@@ -295,8 +295,8 @@ async def recipte_take_foward_other_bot(message: types.Message):
                 defens = int(item.split(':shield:')[1])
             if item.find(':dashing_away:') != -1:
                 dodge = float(item.split(':dashing_away:')[1])
-            if item.find(':direct_hit:') != -1:
-                crit = float(item.split(':direct_hit:')[1])
+            if item.find(':bullseye:') != -1:
+                crit = float(item.split(':bullseye:')[1])
             if item.find(':crystal_ball:') != -1:
                 exp = float(item.split(':crystal_ball:')[1])
             if item.find(':crossed_swords:') != -1:
@@ -372,12 +372,12 @@ async def recipte_take_foward_other_bot(message: types.Message):
             if crit:
                 if crit > recept["crit"]:
                     new_crit = crit
-                    res.append(f':direct_hit:{new_crit}({recept["crit"]}): <b>+{(new_crit-recept["crit"]):.{2}f}</b>✨')
+                    res.append(f':bullseye:{new_crit}({recept["crit"]}): <b>+{(new_crit-recept["crit"]):.{2}f}</b>✨')
                     await pool.fetchrow("""UPDATE recipes SET crit=$1 where name=$2""", new_crit, name_rec,)
                 if crit == recept["crit"]:
-                    res.append(f':direct_hit:{crit}({recept["crit"]}): <b>{crit-recept["crit"]}</b>🔝')
+                    res.append(f':bullseye:{crit}({recept["crit"]}): <b>{crit-recept["crit"]}</b>🔝')
                 if crit < recept["crit"]:
-                    res.append(f':direct_hit:{crit}({recept["crit"]}): <b>{(crit-recept["crit"]):.{2}f}</b>')
+                    res.append(f':bullseye:{crit}({recept["crit"]}): <b>{(crit-recept["crit"]):.{2}f}</b>')
             if exp:
                 if exp > recept["exp"]:
                     new_exp = exp

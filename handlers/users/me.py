@@ -43,12 +43,12 @@ async def bot_command_get_user(message: types.Message):
 <b>:woman_genie:Раса</b> - {race_convert.get(user["race"])}            
 <b>:castle:Гильдия</b> - {user["guild"]}
 <b>:clipboard:Ник</b> - {user["nickname"]}
-<b>:sports_medal:Уровень</b> - {user["lvl"]} (:jigsaw:{user["paragon"]})
+<b>:sports_medal:Уровень</b> - {user["lvl"]} (:puzzle_piece:{user["paragon"]})
 <b>Ид</b> - <code>{user["id"]}</code>
 
 <b>Статы</b> 
 :red_heart:{int(user["hp"])} :crossed_swords:{int(user["atk"])} :shield:{int(user["def"])}
-:dashing_away:{user["dodge"]} :direct_hit:{user["crit"]} :hourglass_not_done:{user["accuracy"]}
+:dashing_away:{user["dodge"]:.2f} :bullseye:{user["crit"]:.2f} :hourglass_not_done:{user["accuracy"]:.2f}
 
 <b>Тотемы (/totems)</b> 
 :dagger:{totems["atk"]} :water_wave:{totems["def"]} :comet:{totems["hp"]}

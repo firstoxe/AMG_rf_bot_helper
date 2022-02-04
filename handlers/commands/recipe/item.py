@@ -132,7 +132,7 @@ async def bot_command_item(message: types.Message):
                             f'{await stat_for_item(item_stat,record,name_rec)}')
     else:
         await message.answer(emojize('Пример использования команды:\n/item Меч Равновесия :crossed_swords:799.7 '
-                                           ':direct_hit:+0.95% :red_heart:95 :sports_medal:50 '
+                                           ':bullseye:+0.95% :red_heart:95 :sports_medal:50 '
                                            ':crystal_ball:+2.45% :biohazard: +4'))
 
 
@@ -151,8 +151,8 @@ async def stat_for_item(item_stat,record,name_rec):
     for item in item_stat:
         if item.find(':crossed_swords:') != -1:
             i_atk = float(item.split(':crossed_swords:')[1])
-        if item.find(':direct_hit:') != -1:
-            i_crit = float(item.split(':direct_hit:')[1][1:-1])
+        if item.find(':bullseye:') != -1:
+            i_crit = float(item.split(':bullseye:')[1][1:-1])
         if item.find(':red_heart:') != -1:
             i_hp = int(item.split(':red_heart:')[1])
         if item.find(':crystal_ball:') != -1:
@@ -199,7 +199,7 @@ async def stat_for_item(item_stat,record,name_rec):
         if record[4] is not None:
             result = f'{result}:dashing_away: {i_dodge:.{2}f}%[<b>{i_dodge-record[4]:.{2}f}</b>]  '
         if record[5] is not None:
-            result = f'{result}:direct_hit: {i_crit:.{2}f}%[<b>{i_crit-record[5]:.{2}f}</b>]  '
+            result = f'{result}:bullseye: {i_crit:.{2}f}%[<b>{i_crit-record[5]:.{2}f}</b>]  '
         if record[7] is not None:
             result = f'{result}:hourglass_not_done: {i_acc:.{2}f}%[<b>{i_acc-record[7]:.{2}f}</b>]  '
         result= f'{result}\n'
